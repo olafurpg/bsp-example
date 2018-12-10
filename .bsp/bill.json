@@ -1,0 +1,7 @@
+{
+  "name": "Bill",
+  "version": "1.0.0",
+  "bspVersion": "2.0.0-M2",
+  "languages": ["scala"],
+  "argv": ["/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home/jre/bin/java","-classpath","/Users/olafurpg/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.jar:/Users/olafurpg/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.jar:/Users/olafurpg/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.jar:/Users/olafurpg/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.jar","bill.Bill","bsp"]
+}
