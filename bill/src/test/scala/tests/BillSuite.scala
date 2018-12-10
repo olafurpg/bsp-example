@@ -5,6 +5,7 @@ import bill.Bill.Server
 import bill.DeleteRecursively
 import ch.epfl.scala.bsp4j.BuildClientCapabilities
 import ch.epfl.scala.bsp4j.CompileParams
+import ch.epfl.scala.bsp4j.DiagnosticSeverity
 import ch.epfl.scala.bsp4j.InitializeBuildParams
 import java.nio.file.Files
 import java.nio.file.Path
@@ -63,7 +64,17 @@ class BillSuite extends FunSuite with BeforeAndAfterEach {
         )
         .toScala
     } yield {
-      pprint.log(client.publishDiagnostics)
+      assert(client.publishDiagnostics.size() == 1)
+      val file = client.publishDiagnostics.peek()
+      assert(file.getDiagnostics.size() == 1)
+      val error = file.getDiagnostics.get(0)
+      assert(error.getSeverity == DiagnosticSeverity.ERROR)
+      assert(
+        error.getMessage ==
+          """type mismatch;
+            | found   : String("")
+            | required: Int""".stripMargin
+      )
     }
     Await.result(future, Duration("20s"))
   }

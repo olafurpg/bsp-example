@@ -167,7 +167,15 @@ object Bill {
             .map { info =>
               val start = toBspPos(info.pos, info.pos.start)
               val end = toBspPos(info.pos, info.pos.end)
-              new Diagnostic(new b.Range(start, end), info.msg)
+              val diagnostic = new Diagnostic(new b.Range(start, end), info.msg)
+              val severity = info.severity match {
+                case reporter.ERROR => DiagnosticSeverity.ERROR
+                case reporter.WARNING => DiagnosticSeverity.WARNING
+                case reporter.INFO => DiagnosticSeverity.INFORMATION
+                case _ => DiagnosticSeverity.HINT
+              }
+              diagnostic.setSeverity(severity)
+              diagnostic
             }
             .toList
           val uri = file.name
